@@ -1,17 +1,17 @@
 program: main.o event.o item.o room.o
-	gcc -o program main.o event.o item.o room.o
+	g++ -o program main.o event.o item.o room.o
 
-main.o: main.c
-	gcc -c main.c
+main.o: main.cpp
+	g++ -c main.cpp
 
-event.o: event.c
-	gcc -c event.c
+event.o: event.cpp
+	g++ -c event.cpp
 
-item.o: item.c
-	gcc -c item.c
+item.o: item.cpp
+	g++ -c item.cpp
 
-item.o: item.c
-	gcc -c item.c
+room.o: room.cpp
+        g++ -c room.cpp
 
 clean:
 	rm -f *.o program
