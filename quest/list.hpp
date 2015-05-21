@@ -4,9 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <string.h>
-#include <ncurses.h>
-#include <unistd.h>
 
 //----Classes------------------------------------------------------------------
 template <typename T>
@@ -25,7 +22,7 @@ class list_t
     elem_t <T> * head_;
 
   public :
-    list_t ( T value );
+    list_t ( );
     ~list_t ( );
     void append_element ( T value );
     void set_element ( int n, T value );

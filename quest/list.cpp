@@ -1,12 +1,10 @@
 #include "list.hpp"
 
 template <typename T>
-list_t<T>::list_t ( T value )
+list_t<T>::list_t ( )
 {
-  len_ = 0;
-  head_ = new elem_t <T>;
-  head_->value_ = value;
-  head_->next_ = NULL;
+  len_ = -1;
+  head_ = NULL;
 }
 
 template <typename T>
@@ -20,13 +18,22 @@ template <typename T>
 void list_t<T>::append_element ( T value )
 {
   elem_t <T> * tmp = head_;
-  while ( tmp->next_ != NULL )
+  if ( tmp == NULL )
   {
-    tmp = tmp->next_;
+    head_ = new elem_t <T>;
+    head_->value_ = value;
+    head_->next_ = NULL;
   }
-  tmp->next_ = new elem_t <T>;
-  tmp->next_->value_ = value;
-  tmp->next_->next_ = NULL;
+  else
+  {
+    while ( tmp->next_ != NULL )
+    {
+      tmp = tmp->next_;
+    }
+    tmp->next_ = new elem_t <T>;
+    tmp->next_->value_ = value;
+    tmp->next_->next_ = NULL;
+  }
   len_++;
 }
 
