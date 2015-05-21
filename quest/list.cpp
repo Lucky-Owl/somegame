@@ -4,7 +4,7 @@ template <typename T>
 list_t<T>::list_t ( T value )
 {
   len_ = 0;
-  head_ = new elem_t <T> *;
+  head_ = new elem_t <T>;
   head_->value_ = value;
   head_->next_ = NULL;
 }
@@ -24,7 +24,7 @@ void list_t<T>::append_element ( T value )
   {
     tmp = tmp->next_;
   }
-  tmp->next_ = new elem_t <T> *;
+  tmp->next_ = new elem_t <T>;
   tmp->next_->value_ = value;
   tmp->next_->next_ = NULL;
   len_++;
@@ -79,20 +79,4 @@ void list_t<T>::delete_element_by_number ( int n )
     last->next_ = current->next_;
   }
   len_--;
-}
-
-int main ( )
-{
-  list_t <char> NList ( 'q' );
-  NList.append_element ( 'w' );
-  NList.append_element ( 'e' );
-  NList.append_element ( 'r' );
-  NList.append_element ( 't' );
-  NList.append_element ( 'y' );
-  NList.delete_element_by_number ( 2 );
-  for ( int i = 0; i < 5; i ++ )
-  {
-    printf ( "%c\n", NList.get_element ( i ) );
-  }
-  return 0;
 }
