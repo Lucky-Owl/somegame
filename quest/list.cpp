@@ -111,3 +111,9 @@ int list_t<T>::get_number_by_element ( T element )
   }
   return n;
 }
+
+template <typename T>
+int list_t<T>::get_len ( )
+{
+  return len_;
+}

@@ -31,6 +31,7 @@ class list_t
     T get_element ( int n );
     void delete_element_by_number ( int n );
     int get_number_by_element ( T element );
+    int get_len ( );
 };
 //-----------------------------------------------------------------------------
 
