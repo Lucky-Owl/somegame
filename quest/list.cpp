@@ -10,8 +10,17 @@ list_t<T>::list_t ( )
 template <typename T>
 list_t<T>::~list_t ( )
 {
-  delete head_;
-  head_ = NULL;
+  elem_t <T> * tmp = head_;
+  if ( head_ != NULL )
+  {
+    while ( tmp->next_ != NULL )
+    {
+      tmp = tmp->next_;
+      delete tmp;
+    }
+    delete head_;
+  }
+  len_ = -1;
 }
 
 template <typename T>
@@ -86,4 +95,19 @@ void list_t<T>::delete_element_by_number ( int n )
     last->next_ = current->next_;
   }
   len_--;
+}
+
+template <typename T>
+int list_t<T>::get_number_by_element ( T element )
+{
+  int n = 0;
+  elem_t <T> * tmp = head_;
+  while ( tmp->value_ != element )
+  {
+    tmp = tmp->next_;
+    n++;
+    if ( ( tmp->next_ == NULL ) && ( tmp->value_ != element ) )
+      return -1;
+  }
+  return n;
 }
