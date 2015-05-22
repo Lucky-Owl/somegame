@@ -1,7 +1,0 @@
-#include "room.hpp"
-
-room_t::room_t ( const char* name, const char* description, list_t <item_t*> items ):
-	name ( name ), description ( description ), items ( items )
-{
- 
-}
