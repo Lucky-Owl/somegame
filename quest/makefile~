@@ -14,7 +14,7 @@ room.o: room.cpp list.o
 	g++ -c room.cpp
 
 list.o: list.cpp 
-	g++ -c list.cpp
+        g++ -c list.cpp
 
 clean:
 	rm -f *.o program

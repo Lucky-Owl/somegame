@@ -9,10 +9,10 @@
 class room_t
 { 
   private:
-    const char* name;    
+    const char* name;    // string or char* ? 
     const char* description;
     list_t <item_t*> items;
-    int available;  
+    int available;
 
   public:
     room_t ( const char* name, const char* description,  list_t <item_t*> items , int available );

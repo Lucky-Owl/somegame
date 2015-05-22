@@ -5,12 +5,12 @@
 class item_t
 {
   private:
-    const char* name;
+    const char[] name;
     int visible;
     int usable;
 
   public:  
-    item_t ( const char* name, int visible, int usable);
+    item_t ( const char[] name, int visible, int usable);
 } ;
 //-------------------------------------
 

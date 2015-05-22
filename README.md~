@@ -2,7 +2,7 @@
 
 should i use string or const char* for description?
 
-rooms do not work yet. fuckup with templates when i use list maybe? please, try to compile room_test.cpp
+rooms do not work. fuckup with templates when i use list maybe? please, try to compile room_test.cpp
 
 is it normal, not to free memory of list in destructor?
 
