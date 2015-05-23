@@ -13,7 +13,7 @@ class item_t
     item_t ( const char* name_, bool visible_, bool usable_ ); 
     void change_visible ( bool visible_ );
     void change_usable ( bool usable_ );
-    void check ( const char* name_, bool visible_, bool usable_ );
+    void dump ( const char* name_, bool visible_, bool usable_ );
 
 } ;
 //-------------------------------------
