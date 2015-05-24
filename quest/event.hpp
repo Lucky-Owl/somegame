@@ -4,7 +4,7 @@
 //----Headers--------------------------
 #include "list.hpp"
 #include "item.hpp"
-//#include "room.hpp"
+#include "room.hpp"
 //-------------------------------------
 
 //----Classes--------------------------
@@ -13,7 +13,7 @@ class event_t
   public :
     list_t <item_t *> * usable_state_;
     list_t <item_t *> * visible_state_;
-    //list_t <room_t *> available_state_;
+    list_t <room_t *> available_state_;
     event_t ( )
     {
       usable_state_ = new list_t <item_t *> ();
@@ -29,23 +29,12 @@ class event_t
     }
 };
 
-class item_pair_t
-{
-  public :
-    item_t * first_;
-    item_t * second_;
-    item_pair_t ( item_t * first, item_t * second )
-    {
-      first_ = first;
-      second_ = second;
-    }
-};
-
 class event_regestry_t
 {
   private :
     list_t <event_t *> * events_;
-    list_t <item_pair_t> * items_;
+    list_t <item_t *> * items_to_use_;
+    list_t <item_t *> * items_for_use_;
 
   public :
     event_regestry_t ( );
