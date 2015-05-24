@@ -7,11 +7,11 @@ main.o: main.cpp
 event.o: event.cpp
 	g++ -c event.cpp
 
+room.o: room.cpp
+	g++ -c room.cpp
+
 item.o: item.cpp
 	g++ -c item.cpp
-
-room.o: room.cpp list.o
-	g++ -c room.cpp
 
 list.o: list.cpp 
 	g++ -c list.cpp

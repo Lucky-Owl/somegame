@@ -1,19 +1,19 @@
 #ifndef H_EVENT
 #define H_EVENT
 
-//----Headers--------------------------
+//----Headers------------------------------------------------------------------
 #include "list.hpp"
 #include "item.hpp"
-//#include "room.hpp"
-//-------------------------------------
+#include "room.hpp"
+//-----------------------------------------------------------------------------
 
-//----Classes--------------------------
+//----Classes------------------------------------------------------------------
 class event_t
 {
   public :
     list_t <item_t *> * usable_state_;
     list_t <item_t *> * visible_state_;
-    //list_t <room_t *> * available_state_;
+    list_t <room_t *> * available_state_;
     event_t ( )
     {
       usable_state_ = new list_t <item_t *> ();
@@ -27,12 +27,10 @@ class event_t
     {
       visible_state_->append_element ( item );
     }
-/*
     void add_available ( room_t * room )
     {
-      visible_state_->append_element ( room );
+      available_state_->append_element ( room );
     }
-*/
 };
 
 class event_regestry_t
@@ -48,7 +46,6 @@ class event_regestry_t
     void add_event ( event_t * event, item_t * first, item_t * second );
     int activate ( item_t * first, item_t * second );
 };
-//-------------------------------------
-
+//-----------------------------------------------------------------------------
 
 #endif

@@ -1,6 +1,6 @@
 #include "item.hpp"
 
-item_t::item_t ( const char* name_, const char* description_, bool visible_, bool usable_ ): name_ ( name_ ), description_ (description_), visible_ ( visible_ ), usable_ ( usable_ )
+item_t::item_t ( const char* name, const char* description, bool visible, bool usable ): name_ ( name ), description_ ( description ), visible_ ( visible ), usable_ ( usable )
 {
 }
 
@@ -12,12 +12,12 @@ item_t::~item_t ( )
 
 const char* item_t::get_name ( )
 {
-return name_;
+  return name_;
 }
 
 const char* item_t::get_description ( )
 {
-return description_;
+  return description_;
 }
 
 void item_t::change_visible ( )
