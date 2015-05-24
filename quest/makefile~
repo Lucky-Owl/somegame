@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+program: main.o list.o event.o item.o room.o player.o
+	g++ -o program main.o list.o event.o item.o room.o player.o
+=======
+program: main.o event.o item.o room.o
+	g++ -o program main.o event.o item.o room.o
+>>>>>>> 2baac50ff50b8a50dc754b4b146d36e9129b051c
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+event.o: event.cpp
+	g++ -c event.cpp
+
+room.o: room.cpp
+	g++ -c room.cpp
+
+item.o: item.cpp
+	g++ -c item.cpp
+
+<<<<<<< HEAD
+list.o: list.cpp 
+	g++ -c list.cpp
+
+player.o: player.cpp
+	g++ -c player.cpp
+
+=======
+>>>>>>> 2baac50ff50b8a50dc754b4b146d36e9129b051c
+clean:
+	rm -f *.o program *~
