@@ -32,7 +32,7 @@ class event_regestry_t
   public :
     event_regestry_t ( );
     ~event_regestry_t ( );
-    void add_event ( event_t * event, item_t * first, item_t * second );
+    add_event ( event_t * event, item_t * first, item_t * second );
     void activate ( item_t * first, item_t * second );
 };
 //-------------------------------------
