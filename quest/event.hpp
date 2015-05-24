@@ -14,6 +14,19 @@ class event_t
     list_t <item_t *> * usable_state_;
     list_t <item_t *> * visible_state_;
     //list_t <room_t *> available_state_;
+    event_t ( )
+    {
+      usable_state_ = new list_t <item_t *> ();
+      visible_state_ = new list_t <item_t *> ();
+    }
+    void add_usable ( item_t * item )
+    {
+      usable_state_->append_element ( item );
+    }
+    void add_visible ( item_t * item )
+    {
+      visible_state_->append_element ( item );
+    }
 };
 
 class item_pair_t
@@ -32,7 +45,7 @@ class event_regestry_t
 {
   private :
     list_t <event_t *> * events_;
-    list_t <item_pair_t *> * items_;
+    list_t <item_pair_t> * items_;
 
   public :
     event_regestry_t ( );

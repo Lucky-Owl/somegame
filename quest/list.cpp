@@ -93,6 +93,7 @@ void list_t<T>::delete_element_by_number ( int n )
       n--;
     }
     last->next_ = current->next_;
+    delete current;
   }
   len_--;
 }
