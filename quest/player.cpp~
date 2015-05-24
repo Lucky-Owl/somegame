@@ -1,0 +1,17 @@
+#include "player.hpp"
+
+player_t::player_t ( const char* name )
+{
+  name_ = name;
+  inventory_ = new list_t <item_t*> ( );
+}
+
+void player_t::take_item ( item_t* item )
+{
+  inventory_ -> append_element ( item );
+}
+
+void player_t::drop_item ( item_t* item)
+{
+   inventory_ -> delete_element_by_value ( item );
+}
