@@ -17,4 +17,4 @@ list.o: list.cpp
 	g++ -c list.cpp
 
 clean:
-	rm -f *.o program
+	rm -f *.o program *~
