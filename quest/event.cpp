@@ -1,4 +1,7 @@
 #include "event.hpp"
+#include "list.cpp"
+#include "item.cpp"
+//#include "room.cpp"
 
 event_regestry_t::event_regestry_t ( )
 {
@@ -21,7 +24,7 @@ void event_regestry_t::add_event ( event_t * event, item_t * first, item_t * sec
   items_for_use_->append_element ( second );
 }
 
-void event_regestry_t::activate ( item_t * first, item_t * second )
+int event_regestry_t::activate ( item_t * first, item_t * second )
 {
   int n = 0;
   list_t <int> first_items;
@@ -38,7 +41,7 @@ void event_regestry_t::activate ( item_t * first, item_t * second )
     }
   }
   if ( check )
-    assert ( NULL );
+    return -1;
   event_t * current_event = events_->get_element ( n );
   for ( int i = 0; i <= current_event->usable_state_->get_len(); i++ )
   {
@@ -48,8 +51,18 @@ void event_regestry_t::activate ( item_t * first, item_t * second )
   {
     current_event->visible_state_->get_element(i)->change_visible();
   }
+/*
   for ( int i = 0; i <= current_event->available_state_->get_len(); i++ )
   {
     current_event->available_state_->get_element(i)->change_available();
   }
+*/
+  items_to_use_->delete_element_by_number ( n );
+  items_for_use_->delete_element_by_number ( n );
+  events_->delete_element_by_number ( n );
+  return 0;
+}
+
+int main ( )
+{
 }
