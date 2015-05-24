@@ -16,5 +16,8 @@ room.o: room.cpp list.o
 list.o: list.cpp 
 	g++ -c list.cpp
 
+player.o: player.cpp
+	g++ -c player.cpp
+
 clean:
 	rm -f *.o program *~

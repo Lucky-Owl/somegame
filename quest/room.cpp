@@ -24,13 +24,13 @@ void room_t::show_room ( )
   for (int i = 0; i<=(items_ -> get_len()); i++)
   {
     item_t* curr_elem = items_->  get_element(i);
-    printf("%s", curr_elem -> get_name());
+    printf("%s\n", curr_elem -> get_name());
   }
   printf ( "the room has %d heighbours : \n", ((neighbours_ -> get_len())+1)); 
   for (int i = 0; i<=(neighbours_ -> get_len()); i++)
   {
     room_t* curr_elem = neighbours_->  get_element(i);
-    printf("%s", curr_elem -> name_);
+    printf("%s\n", curr_elem -> name_);
   }
   printf ( "available : %s \n", available_ ? "True" : "False");
 }
