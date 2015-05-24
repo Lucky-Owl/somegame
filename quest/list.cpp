@@ -99,18 +99,22 @@ void list_t<T>::delete_element_by_number ( int n )
 }
 
 template <typename T>
-int list_t<T>::get_number_by_element ( T element )
+void list_t<T>::get_number_by_element ( T element, list_t <int> * answer )
 {
   int n = 0;
   elem_t <T> * tmp = head_;
-  while ( tmp->value_ != element )
+  if ( head_ != NULL )
   {
-    tmp = tmp->next_;
-    n++;
-    if ( ( tmp->next_ == NULL ) && ( tmp->value_ != element ) )
-      return -1;
+    if ( tmp->value_ == element )
+      answer->append_element ( n );
+    while ( tmp->next_ != NULL )
+    {
+      n++;
+      tmp = tmp->next_;
+      if ( tmp->value_ == element)
+        answer->append_element ( n );
+    }
   }
-  return n;
 }
 
 template <typename T>

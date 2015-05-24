@@ -30,7 +30,7 @@ class list_t
     void set_element ( int n, T value );
     T get_element ( int n );
     void delete_element_by_number ( int n );
-    int get_number_by_element ( T element );
+    void get_number_by_element ( T element, list_t <int> * answer );
     int get_len ( );
 };
 //-----------------------------------------------------------------------------
