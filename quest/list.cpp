@@ -99,6 +99,29 @@ void list_t<T>::delete_element_by_number ( int n )
 }
 
 template <typename T>
+void list_t<T>::delete_element_by_value ( T value )
+{
+  elem_t <T> * current = head_->next_;
+  elem_t <T> * last = head_;
+  if ( last->value_ == value )
+  {
+    head_ = current;
+    delete last;
+  }
+  else
+  {
+    while ( current->value_ != value )
+    {
+      last = last->next_;
+      current = current->next_;
+    }
+    last->next_ = current->next_;
+    delete current;
+  }
+  len_--;
+}
+
+template <typename T>
 void list_t<T>::get_number_by_element ( T element, list_t <int> * answer )
 {
   int n = 0;
