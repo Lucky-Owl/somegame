@@ -10,6 +10,11 @@ item_t::~item_t ( )
   description_ = NULL;
 }
 
+const char* item_t::get_name ( )
+{
+return name_;
+}
+
 const char* item_t::get_description ( )
 {
 return description_;

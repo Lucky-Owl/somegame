@@ -17,13 +17,14 @@ class room_t
     bool available_;  
 
   public:
-    room_t ( const char* name, const char* description,  list_t <item_t*>* items , list_t <room_t*>* neighbours, bool available );
+    room_t ( const char* name, const char* description, bool available );
     ~room_t ( );
     void show_room ( ); //show description of the current room and all items in it
     void change_available ( );
     void check ( );
-    void add_neighbour ( room_t * neighbour ); 
+    void add_neighbour ( room_t* neighbour ); 
     void add_item ( item_t* item );
+    void remove_item ( item_t* item);
 };
 //-------------------------------------
 

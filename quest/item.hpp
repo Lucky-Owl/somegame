@@ -17,6 +17,7 @@ class item_t
   public:  
     item_t ( const char* name_, const char* description_, bool visible_, bool usable_ ); 
     ~item_t ( );
+    const char* get_name ( );
     const char* get_description ( );
     void change_visible ( );
     void change_usable ( );
