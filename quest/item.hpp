@@ -21,7 +21,6 @@ class item_t
     void change_visible ( );
     void change_usable ( );
     void check ( );
-
 } ;
 //-------------------------------------
 
