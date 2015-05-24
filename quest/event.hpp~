@@ -11,7 +11,7 @@
 class event_t
 {
   public :
-    list_t <item_t *> * usable_state_;
+    list_t <item_t *> * isable_state_;
     list_t <item_t *> * visible_state_;
     //list_t <room_t *> available_state_;
 };
