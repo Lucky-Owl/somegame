@@ -1,5 +1,5 @@
-#ifndef H_CLIST
-#define H_CLIST
+#ifndef H_LIST
+#define H_LIST
 
 //----Headers------------------------------------------------------------------
 #include <stdio.h>

@@ -60,5 +60,5 @@ void room_t::add_item ( item_t* item )
 
 void room_t::remove_item ( item_t* item)
 {
-   items_ -> delete_element_by_value ( item );
+  items_ -> delete_element_by_value ( item );
 }

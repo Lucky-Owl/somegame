@@ -1,7 +1,4 @@
 #include "event.hpp"
-#include "list.cpp"
-#include "item.cpp"
-//#include "room.cpp"
 
 event_regestry_t::event_regestry_t ( )
 {
@@ -51,18 +48,12 @@ int event_regestry_t::activate ( item_t * first, item_t * second )
   {
     current_event->visible_state_->get_element(i)->change_visible();
   }
-/*
   for ( int i = 0; i <= current_event->available_state_->get_len(); i++ )
   {
     current_event->available_state_->get_element(i)->change_available();
   }
-*/
   items_to_use_->delete_element_by_number ( n );
   items_for_use_->delete_element_by_number ( n );
   events_->delete_element_by_number ( n );
   return 0;
-}
-
-int main ( )
-{
 }
