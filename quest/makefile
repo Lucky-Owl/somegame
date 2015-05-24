@@ -1,5 +1,5 @@
-program: main.o list.o event.o item.o room.o
-	g++ -o program main.o list.o event.o item.o room.o
+program: main.o list.o event.o item.o room.o player.o
+	g++ -o program main.o list.o event.o item.o room.o player.o
 
 main.o: main.cpp
 	g++ -c main.cpp
