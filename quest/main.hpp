@@ -6,6 +6,7 @@
 #include "item.hpp"
 #include "event.hpp"
 #include "room.hpp"
+#include "player.hpp"
 //-----------------------------------------------------------------------------
 
 #endif

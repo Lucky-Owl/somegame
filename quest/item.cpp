@@ -20,6 +20,16 @@ const char* item_t::get_description ( )
   return description_;
 }
 
+bool item_t::get_visible ( )
+{
+  return visible_;
+}
+
+bool item_t::get_usable ( )
+{
+  return usable_;
+}
+
 void item_t::change_visible ( )
 {
   visible_ = !visible_;

@@ -18,6 +18,7 @@ class event_t
     {
       usable_state_ = new list_t <item_t *> ();
       visible_state_ = new list_t <item_t *> ();
+      available_state_ = new list_t <room_t *> ();
     }
     void add_usable ( item_t * item )
     {

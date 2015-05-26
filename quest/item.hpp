@@ -19,6 +19,8 @@ class item_t
     ~item_t ( );
     const char* get_name ( );
     const char* get_description ( );
+    bool get_visible ( );
+    bool get_usable ( );
     void change_visible ( );
     void change_usable ( );
     void check ( );

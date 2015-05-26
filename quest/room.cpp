@@ -18,21 +18,48 @@ room_t::~room_t ( )
 
 void room_t::show_room ( )
 {
-  printf ( "name : %s \n", name_ );
-  printf ( "description : %s \n", description_ );
-  printf ( "there are %d items in the room : \n", ((items_ -> get_len())+1));
-  for (int i = 0; i<=(items_ -> get_len()); i++)
+  printf ( "%s \n", name_ );
+  printf ( "%s \n", description_ );
+  int n = 1;
+  for (int i = 0; i<=(items_ -> get_len() ); i++)
   {
-    item_t* curr_elem = items_->  get_element(i);
-    printf("%s\n", curr_elem -> get_name());
+    item_t* curr_elem = items_ ->  get_element(i);
+    if (curr_elem -> get_visible() )
+    {
+      n++;
+    }
   }
-  printf ( "the room has %d heighbours : \n", ((neighbours_ -> get_len())+1)); 
-  for (int i = 0; i<=(neighbours_ -> get_len()); i++)
+  printf ( "There are %d items in the room : \n", (n-1) );
+  n = 1;
+  for (int i = 0; i<=(items_ -> get_len() ); i++)
   {
-    room_t* curr_elem = neighbours_->  get_element(i);
-    printf("%s\n", curr_elem -> name_);
+    item_t* curr_elem = items_ ->  get_element(i);
+    if (curr_elem -> get_visible() )
+    {
+      printf ("%d - %s\n", n, curr_elem -> get_name() );
+      n++;
+    }
   }
-  printf ( "available : %s \n", available_ ? "True" : "False");
+  n = 1;
+  for ( int i = 0; i <= ( neighbours_ -> get_len() ); i++ )
+  {
+    room_t* curr_elem = neighbours_ ->  get_element ( i );
+    if (curr_elem -> available_)
+    {
+      n++;
+    }
+  }
+  printf ( "The room has %d heighbours : \n", (n-1) ); 
+  n = 1;
+  for ( int i = 0; i <= ( neighbours_ -> get_len() ); i++ )
+  {
+    room_t* curr_elem = neighbours_ ->  get_element ( i );
+    if (curr_elem -> available_)
+    {
+      printf( "%d - %s\n", n, curr_elem -> name_ );
+      n++;
+    }
+  }
 }
 
 void room_t::change_available ( )
@@ -56,6 +83,23 @@ void room_t::add_neighbour ( room_t* neighbour )
 void room_t::add_item ( item_t* item )
 {
   items_->append_element ( item );
+}
+ 
+item_t* room_t::get_item ( int num )
+{
+  int n = 1;
+  for (int i = 0; i<=(items_ -> get_len() ); i++)
+  {
+    item_t* curr_item = items_ ->  get_element(i);
+    if (curr_item -> get_visible() )
+    { 
+      if (n = num)
+      { 
+        return curr_item;
+      }
+      n++;
+    }
+  }
 }
 
 void room_t::remove_item ( item_t* item)

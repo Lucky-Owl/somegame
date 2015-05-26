@@ -4,6 +4,7 @@
 //----Headers--------------------------
 #include "list.hpp"
 #include "item.hpp"
+#include "room.hpp"
 #include <stdio.h>
 //-------------------------------------
 
@@ -11,13 +12,14 @@
 class player_t
 {
   private:
+    room_t* current_room_ ;
     const char* name_;
     list_t <item_t*>* inventory_;
 
   public:  
-    player_t ( const char* name );
-    void take_item ( );
-    void drop_item ( );
+    player_t ( const char* name, room_t* current_room );
+    void take_item ( int num );
+    void drop_item ( int num );
     void show_inventory ( );
 } ;
 //-------------------------------------
