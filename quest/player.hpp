@@ -18,6 +18,9 @@ class player_t
 
   public:  
     player_t ( const char* name, room_t* current_room );
+    const char* get_name ( );
+    void change_current_room ( int num );
+    void show_current_room ( );
     void take_item ( int num );
     void drop_item ( int num );
     void show_inventory ( );

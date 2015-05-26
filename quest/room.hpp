@@ -20,10 +20,13 @@ class room_t
   public:
     room_t ( const char* name, const char* description, bool available );
     ~room_t ( );
+    int visible_items_num ( );
+    int available_neighbours_num ( );
     void show_room ( );
     void change_available ( );
     void check ( );
-    void add_neighbour ( room_t* neighbour ); 
+    void add_neighbour ( room_t* neighbour );
+    room_t* get_neighbour ( int num );  
     void add_item ( item_t* item );
     item_t* get_item ( int num );
     void remove_item ( item_t* item);
