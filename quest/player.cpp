@@ -3,7 +3,7 @@
 player_t::player_t ( const char* name, room_t* current_room)
 {
   name_ = name;
-  room_t* current_room_ = current_room;
+  current_room_ = current_room;
   inventory_ = new list_t <item_t*> ( );
 }
 
@@ -16,7 +16,7 @@ void player_t::change_current_room ( int num )
 {   
   if ( ( num > 0 ) && (num <= current_room_ -> available_neighbours_num ( ) ) )
   {  
-    current_room_ = current_room_ -> get_neighbour ( num );
+    current_room_ = current_room_ -> fetch_neighbour ( num );
   }
   else
   {
@@ -37,7 +37,7 @@ void player_t::take_item ( int num )
   }
   else
   {
-    inventory_ -> append_element ( current_room_ -> get_item ( num ) ); 
+    inventory_ -> append_element ( current_room_ -> fetch_item ( num ) ); 
   }
 }
 

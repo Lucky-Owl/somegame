@@ -26,9 +26,9 @@ class room_t
     void change_available ( );
     void check ( );
     void add_neighbour ( room_t* neighbour );
-    room_t* get_neighbour ( int num );  
+    room_t* fetch_neighbour ( int num );  
     void add_item ( item_t* item );
-    item_t* get_item ( int num );
+    item_t* fetch_item ( int num );
     void remove_item ( item_t* item);
 };
 //-----------------------------------------------------------------------------

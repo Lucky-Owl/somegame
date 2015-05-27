@@ -26,8 +26,6 @@ int main ( )
   opening_door -> add_visible ( opened_door );
   opening_door -> add_visible ( closed_door );
   opening_door -> add_available (green_room);
-  yellow_room -> show_room ( );
-  printf ( "OK\n");
 // game interface
   //init player
   bool done = false;

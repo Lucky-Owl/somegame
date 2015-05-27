@@ -93,7 +93,7 @@ void room_t::add_neighbour ( room_t* neighbour )
   //tell neighbour
 }
 
-room_t* room_t::get_neighbour ( int num )
+room_t* room_t::fetch_neighbour ( int num )
 {
   int n = 1;
   for ( int i = 0; i <= ( neighbours_ -> get_len() ); i++ )
@@ -115,7 +115,7 @@ void room_t::add_item ( item_t* item )
   items_->append_element ( item );
 }
  
-item_t* room_t::get_item ( int num )
+item_t* room_t::fetch_item ( int num )
 {  
   int n = 1;
   for (int i = 0; i<=(items_ -> get_len() ); i++)
