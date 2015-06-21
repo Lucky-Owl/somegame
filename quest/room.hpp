@@ -4,21 +4,22 @@
 //----Headers------------------------------------------------------------------
 #include "item.hpp"
 #include "list.hpp"
-#include <stdio.h>
+#include <iostream>
+using std::string;
 //-----------------------------------------------------------------------------
 
 //----Classes------------------------------------------------------------------
 class room_t
 { 
   private:
-    const char* name_;    
-    const char* description_;
+    string name_;    
+    string description_;
     list_t <item_t*>* items_;
     list_t <room_t*>* neighbours_;
     bool available_;  
 
   public:
-    room_t ( const char* name, const char* description, bool available );
+    room_t ( string name, string description, bool available );
     ~room_t ( );
     int visible_items_num ( );
     int available_neighbours_num ( );

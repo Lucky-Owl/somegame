@@ -7,7 +7,6 @@
 #include "event.hpp"
 #include "room.hpp"
 #include "player.hpp"
-#include <cstring>
 //-----------------------------------------------------------------------------
 
 #endif

@@ -1,8 +1,9 @@
 #include "main.hpp"
+using std::string;
 
-void show_help ( )
+void show_help ( ) //change ending of words, looking at number  ; 
 { 
-  printf("navigation: \n  'help' - for these tips\n  'look_around' - for room description\n  'check_pocket' - to see your inventory\n  'take[enter][item number]' - to put item in inventory\n  'throw_away[enter][item number]' - to remove object from inventory\n  'use[enter][pair of item numbers]' - to make action\n  'go[enter][room number]' - to enter another room");
+  std::cout << "navigation:" << std::endl <<  "  'help' - for these tips" << std::endl <<  "  'look_around' - for room description" << std::endl <<  "  'check_pocket' - to see your inventory" << std::endl <<  "  'take [item number]' - to put item in inventory" << std::endl <<  "  'throw_away [item number]' - to remove object from inventory" << std::endl <<  "  'use [pair of item numbers]' - to make action" << std::endl <<  "  'go [room number]' - to enter another room"  << std::endl << "  'give_up' - to end game" << std::endl;
 }
 
 int main ( )
@@ -29,66 +30,73 @@ int main ( )
 // game interface
   //init player
   bool done = false;
-  printf ( "Enter your name: " );
-  char * name = ( char* ) malloc ( 100 );
-  scanf ( "%s", name );
+  system ("clear");
+  std::cout << "Enter your name: " ;
+  string name = ""; 
+  std::cin >> name ;
   player_t* player  = new player_t ( name , yellow_room );
-  printf ("Welcome to this game, %s!\n", player -> get_name ( ) );
+  std::cout << "Welcome to this game, " << player -> get_name ( )  << "!" << std::endl;
   player -> show_current_room ( );
   show_help ();
   //game loop
   bool act_done = false;
-  char * turn = ( char* ) malloc ( 100 ) ;
+  string turn = ""; 
   int number = 0, 
       first = 0, 
       second = 0;
   while (!(done))
   {
-    printf ("Take your action!\n");
-    scanf ("%s", turn);
+    std::cout << "Take your action!" << std::endl ;
+    std::cin >> turn ;
     act_done = false;
-    if ( ( !act_done ) && ( strcmp( turn, "help" )==0 ) )
+    if ( ( !act_done ) && ( turn=="help" ) )
     {
       show_help ( );
       act_done = true;
     }
-    if ( ( !act_done ) && ( strcmp( turn, "look_around" )==0 ) )
+    if ( ( !act_done ) && ( turn=="look_around" ) )
     {
       player -> show_current_room ( );
       act_done = true;
     }
-    if ( ( !act_done ) && ( strcmp ( turn, "check_pocket" )==0 ) )
+    if ( ( !act_done ) && ( turn=="check_pocket" ) )
     {
       player -> show_inventory ( );
       act_done = true;
     }
-    if ( ( !act_done ) && ( strcmp ( turn, "take" )==0 ) )
+    if ( ( !act_done ) && ( turn=="take" ) )
     {
-      scanf ( "%d", &number );
+      std::cin >>  number ;
       player -> take_item ( number);
       act_done = true;
     }
-    if ( ( !act_done ) && ( strcmp( turn, "throw_away" )==0 ) )
+    if ( ( !act_done ) && ( turn=="throw_away" ) )
     {
-      scanf ( "%d", &number );
+      std::cin >> number ;
       player -> drop_item ( number);
       act_done = true;
     }
-    if ( ( !act_done ) && ( strcmp ( turn, "use" )==0 ) )
+    if ( ( !act_done ) && ( turn=="use" ) )
     {
-      scanf ( "%d %d", &first, &second );
-      //here goes event ><
+      std::cin >> first >> second ;
+      REG.activate ( player -> find_item ( first ), player -> fetch_room_item ( second ) );
       act_done = true;
     }
-    if ( ( !act_done ) && ( strcmp ( turn, "go" )==0 ) )
+    if ( ( !act_done ) && ( turn=="go" ) )
     {
-      scanf ( "%d", &number );
+      std::cin >> number ;
       player -> change_current_room ( number);
       act_done = true;
     }
+    if ( ( !act_done ) && ( turn=="give_up" ) )
+    {
+      std::cout << "Thanks for playing." << std::endl;
+      act_done = true;
+      done = true;
+    }
     if (!act_done)
     {
-      printf ("Try again\n");
+      std::cout << "Please, try again." << std::endl;
     }
   }
 

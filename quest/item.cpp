@@ -1,21 +1,19 @@
 #include "item.hpp"
 
-item_t::item_t ( const char* name, const char* description, bool visible, bool usable ): name_ ( name ), description_ ( description ), visible_ ( visible ), usable_ ( usable )
+item_t::item_t ( string name, string description, bool visible, bool usable ): name_ ( name ), description_ ( description ), visible_ ( visible ), usable_ ( usable )
 {
 }
 
 item_t::~item_t ( )
 {
-  name_ = NULL;
-  description_ = NULL;
 }
 
-const char* item_t::get_name ( )
+string item_t::get_name ( )
 {
   return name_;
 }
 
-const char* item_t::get_description ( )
+string item_t::get_description ( )
 {
   return description_;
 }
@@ -42,8 +40,8 @@ void item_t::change_usable ( )
 
 void item_t::check ( )
 {
-  printf ( "name : %s \n", name_ );
-  printf ( "description : %s \n", description_ );
-  printf ( "visible : %s \n", visible_ ? "True" : "False");
-  printf ( "usable : %s \n", usable_ ? "True" : "False");
+  std::cout << "name : " << name_ << std::endl;
+  std::cout << "description : " << description_ << std::endl;
+  std::cout << "visible : " << std::boolalpha << visible_ << std::endl;
+  std::cout << "usable : " << std::boolalpha << usable_ << std::endl;
 }

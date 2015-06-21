@@ -1,6 +1,6 @@
 #include "room.hpp"
 
-room_t::room_t ( const char* name, const char* description, bool available )
+room_t::room_t ( string name, string description, bool available )
 {  
   name_ = name;
   description_ = description;
@@ -11,9 +11,6 @@ room_t::room_t ( const char* name, const char* description, bool available )
 
 room_t::~room_t ( )
 {
-  name_ = NULL;
-  description_ = NULL;
-  //lists
 }
 
 int room_t::visible_items_num ( )
@@ -46,30 +43,29 @@ int room_t::available_neighbours_num ( )
 
 void room_t::show_room ( )
 { 
-  if (this->name_ = 0) {  printf ( "OK\n"); }
-  printf ( "%s \n", name_ );
-  printf ( "%s \n", description_ );
+  std::cout << name_ << std::endl;
+  std::cout << description_ << std::endl;
   int n = visible_items_num ( );
-  printf ( "There are %d items in the room : \n", n );
+  std::cout << "There are " << n << " items in the room : " << std::endl;
   n = 1;
   for (int i = 0; i<= ( items_ -> get_len() ); i++)
   {
     item_t* curr_elem = items_ ->  get_element(i);
     if (curr_elem -> get_visible() )
     {
-      printf ("%d - %s\n", n, curr_elem -> get_name() );
+      std::cout << n << " - " << curr_elem -> get_name() << std::endl;
       n++;
     }
   }
   n = available_neighbours_num ( );
-  printf ( "The room has %d heighbours : \n", n ); 
+  std::cout << "The room has " << n << " neighbours : " << std::endl;
   n = 1;
   for ( int i = 0; i <= ( neighbours_ -> get_len() ); i++ )
   {
     room_t* curr_elem = neighbours_ ->  get_element ( i );
     if (curr_elem -> available_)
     {
-      printf( "%d - %s\n", n, curr_elem -> name_ );
+      std::cout << n << " - " << curr_elem -> name_ << std::endl;
       n++;
     }
   }
@@ -82,9 +78,9 @@ void room_t::change_available ( )
 
 void room_t::check ( )
 {
-  printf ( "name : %s \n", name_ );
-  printf ( "description : %s \n", description_ );
-  printf ( "available : %s \n", available_ ? "True" : "False");
+  std::cout << "name : " << name_ << std::endl;
+  std::cout << "description : " << description_ << std::endl;
+  std::cout << "available : " << std::boolalpha << available_ << std::endl;
 }
 
 void room_t::add_neighbour ( room_t* neighbour )
