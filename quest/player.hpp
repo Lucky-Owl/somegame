@@ -20,13 +20,14 @@ class player_t
   public:  
     player_t ( string name, room_t* current_room );
     string get_name ( );
-    void change_current_room ( int num );
-    void show_current_room ( );
+    void show_inventory ( );
     void take_item ( int num );
     item_t* find_item ( int num );
-    item_t* fetch_room_item ( int num );// non-working - assertation fault
-    void drop_item ( int num ); //non-working - assertation fault
-    void show_inventory ( );
+    void drop_item ( int num ); 
+    void change_current_room ( int num );
+    void show_current_room ( );
+    item_t* fetch_room_item ( int num );
+
 } ;
 //-------------------------------------
 

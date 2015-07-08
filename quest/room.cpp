@@ -46,27 +46,55 @@ void room_t::show_room ( )
   std::cout << name_ << std::endl;
   std::cout << description_ << std::endl;
   int n = visible_items_num ( );
-  std::cout << "There are " << n << " items in the room : " << std::endl;
-  n = 1;
-  for (int i = 0; i<= ( items_ -> get_len() ); i++)
+  if ( n == 0 )
   {
-    item_t* curr_elem = items_ ->  get_element(i);
-    if (curr_elem -> get_visible() )
+    std::cout << "This room has no objects." << std::endl;
+  }
+  else  
+  {
+    if ( n == 1)
     {
-      std::cout << n << " - " << curr_elem -> get_name() << std::endl;
-      n++;
+      std::cout << "There is one object in the room : " << std::endl;
+    }
+    else 
+    { 
+      std::cout << "There are " << n << " items in the room : " << std::endl;
+    }
+    n = 1;
+    for (int i = 0; i<= ( items_ -> get_len() ); i++)
+    {
+      item_t* curr_elem = items_ ->  get_element(i);
+      if (curr_elem -> get_visible() )
+      {
+        std::cout << n << " - " << curr_elem -> get_name() << std::endl;
+        n++;
+      }
     }
   }
   n = available_neighbours_num ( );
-  std::cout << "The room has " << n << " neighbours : " << std::endl;
-  n = 1;
-  for ( int i = 0; i <= ( neighbours_ -> get_len() ); i++ )
+  if ( n == 0 )
   {
-    room_t* curr_elem = neighbours_ ->  get_element ( i );
-    if (curr_elem -> available_)
+    std::cout << "This room has no adjacent rooms." << std::endl;
+  }
+  else  
+  {
+    if ( n == 1 )
     {
-      std::cout << n << " - " << curr_elem -> name_ << std::endl;
-      n++;
+      std::cout << "This room has one neighbour : " << std::endl;
+    }
+    else 
+    { 
+      std::cout << "The room has " << n << " neighbours : " << std::endl;
+    }
+    n = 1;
+    for ( int i = 0; i <= ( neighbours_ -> get_len() ); i++ )
+    {
+      room_t* curr_elem = neighbours_ ->  get_element ( i );
+      if (curr_elem -> available_ )
+      {
+        std::cout << n << " - " << curr_elem -> name_ << std::endl;
+        n++;
+      }
     }
   }
 }
