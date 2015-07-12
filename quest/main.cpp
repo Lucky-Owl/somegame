@@ -1,11 +1,6 @@
 #include "main.hpp"
 using std::string;
 
-void show_help ( ) 
-{ 
-  std::cout << "navigation:" << std::endl <<  "  'help' - for these tips" << std::endl <<  "  'look_around' - for room description" << std::endl <<  "  'check_pocket' - to see your inventory" << std::endl <<  "  'take [item number]' - to put item in inventory" << std::endl <<  "  'throw_away [item number]' - to remove object from inventory" << std::endl <<  "  'use [pair of item numbers]' - to make action" << std::endl <<  "  'go [room number]' - to enter another room"  << std::endl << "  'give_up' - to end game" << std::endl;
-}
-
 int main ( )
 {
 //game constructor
@@ -22,92 +17,33 @@ int main ( )
   yellow_room -> add_neighbour ( green_room );
   yellow_room -> add_neighbour ( red_room );
   green_room -> add_neighbour ( yellow_room );
-  event_regestry_t REG;
+  event_regestry_t* REG = new event_regestry_t;
   event_t * opening_door = new event_t();
   opening_door -> add_visible ( opened_door );
   opening_door -> add_visible ( closed_door );
   opening_door -> add_available (green_room);
-  REG.add_event(opening_door, rusted_key, closed_door);
+  REG -> add_event( opening_door, rusted_key, closed_door );
 // game interface
-  //init player
+  //init game instance
   bool done = false;
   system ("clear");
   std::cout << "Enter your name: " ;
   string name = ""; 
   std::cin >> name ;
-  player_t* player  = new player_t ( name , yellow_room );
-  std::cout << "Welcome to this game, " << player -> get_name ( )  << "!" << std::endl;
-  player -> show_current_room ( );
-  show_help ();
+  game_instance_t* game  = new game_instance_t ( name , yellow_room, REG );
+  std::cout << "Welcome to this game, " << game -> get_name ( )  << "!" << std::endl;
+  game -> show_help ();
   //game loop
-  bool act_done = false;
   string turn = ""; 
-  int number = 0, 
-      first = 0, 
-      second = 0;
+  std::cout << "Take your action!" << std::endl ;
   while (!(done))
   {
-    std::cout << "Take your action!" << std::endl ;
     std::cin >> turn ;
-   // player -> will_analyse ( turn );
-    act_done = false;
-    if ( ( !act_done ) && ( turn=="help" ) )
+    if ( game -> action ( turn ) == -1) 
     {
-      show_help ( );
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="look_around" ) )
-    {
-      player -> show_current_room ( );
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="check_pocket" ) )
-    {
-      player -> show_inventory ( );
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="take" ) )
-    {
-      std::cin >>  number ;
-      player -> take_item ( number);
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="throw_away" ) )
-    {
-      std::cin >> number ;
-      player -> drop_item ( number);
-      std::cin.clear();
-      std::cin.sync();
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="use" ) )
-    {
-      std::cin >> first >> second ;
-      REG.activate ( player -> find_item ( first ), player -> fetch_room_item ( second ) );
-      std::cin.clear();
-      std::cin.sync();
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="go" ) )
-    {
-      std::cin >> number ;
-      player -> change_current_room ( number);
-      std::cin.clear();
-      std::cin.sync();
-      act_done = true;
-    }
-    if ( ( !act_done ) && ( turn=="give_up" ) )
-    {
-      std::cout << "Thanks for playing." << std::endl;
-      act_done = true;
       done = true;
-    }
-    if (!act_done)
-    {
-      std::cout << "Please, try again." << std::endl;
-    }
+    } 
   }
-
   return 0;
 }
 

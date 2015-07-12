@@ -6,7 +6,7 @@
 #include "item.hpp"
 #include "event.hpp"
 #include "room.hpp"
-#include "player.hpp"
+#include "game_instance.hpp"
 //-----------------------------------------------------------------------------
 
 #endif
